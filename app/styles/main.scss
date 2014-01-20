@@ -6,18 +6,15 @@ body {
     padding: 0;
 }
 
-@mixin boxgen(
-      $color
-      ,$number
-    ) {
-  margin: 2px;
+@mixin boxgen($color,$number) {
+  margin: auto;
   color: #fff;
   background-color: $color;
   font-size: $number * .2;
   width: $number * 1.1;
   height: $number;
     border-top-style: ridge;
-    border-right-style: ridge;
+    border-right-style: dashed;
     border-bottom-style: dashed;
     border-left-style: ridge;
   border-color: darken($color, 8%); 
@@ -29,7 +26,6 @@ body {
 $boxsize: 75px;
 
 .header {
-  height: 500px;
 
   .container { 
     width: 960px;
@@ -42,7 +38,7 @@ $boxsize: 75px;
       .gray {
         display: inline-block;
         .box {
-              @include boxgen(#458B74, $boxsize);
+              @include boxgen(#458B74, 50px);
               }
       }
       .red {
@@ -50,21 +46,20 @@ $boxsize: 75px;
         .box {
               @include boxgen(#DC143C, $boxsize);
               }
-
       }
       .blue {
         display: inline-block;
         .box {
-              @include boxgen(#3D59AB, $boxsize);
+              @include boxgen(#3D59AB, $boxsize * 1.2);
               }
-
       }
     }
   }  
 }
 
+
+// this is for the second section of different mixins
 @mixin section($height:300px,$bg:rgb(218,218,200)){
- height:$height;
  background-color: $bg;
  border: 1px solid black;
 }
@@ -76,7 +71,6 @@ $boxsize: 75px;
 
 @mixin maincontent ($bg:#fff,$dim:200px) {
   background-color: $bg;
-  height:$dim; 
   width:$dim * 2;
   margin: Auto;
 }
