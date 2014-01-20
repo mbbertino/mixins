@@ -2,23 +2,111 @@ body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-    h1 {
-        font-size: 60px;
-        line-height: 1;
-        letter-spacing: -1px;
-    }
+@mixin boxgen(
+      $color
+      ,$number
+    ) {
+  margin: 2px;
+  color: #fff;
+  background-color: $color;
+  font-size: $number * .2;
+  width: $number * 1.1;
+  height: $number;
+    border-top-style: ridge;
+    border-right-style: ridge;
+    border-bottom-style: dashed;
+    border-left-style: ridge;
+  border-color: darken($color, 8%); 
+  text-align: center;
+  line-height: $number;
+  display: inline-block;
 }
+
+$boxsize: 75px;
+
+.header {
+  height: 500px;
+
+  .container { 
+    width: 960px;
+    margin: 0 auto;
+
+    .content {
+      width: 720px;
+      margin: 0 auto;
+
+      .gray {
+        display: inline-block;
+        .box {
+              @include boxgen(#458B74, $boxsize);
+              }
+      }
+      .red {
+        display: inline-block;
+        .box {
+              @include boxgen(#DC143C, $boxsize);
+              }
+
+      }
+      .blue {
+        display: inline-block;
+        .box {
+              @include boxgen(#3D59AB, $boxsize);
+              }
+
+      }
+    }
+  }  
+}
+
+@mixin section($height:300px,$bg:rgb(218,218,200)){
+ height:$height;
+ background-color: $bg;
+ border: 1px solid black;
+}
+
+@mixin container ($width:960px) {
+ width:$width;
+ margin: 0 auto;
+}
+
+@mixin maincontent ($bg:#fff,$dim:200px) {
+  background-color: $bg;
+  height:$dim; 
+  width:$dim * 2;
+  margin: Auto;
+}
+
+@mixin circle ($dim,$color) {
+  height: $dim;
+  width: $dim;
+  border-radius: $dim;
+  margin:$dim / 25;
+  background-color: $color;
+  line-height: $dim;
+  text-align: center;
+  display: inline-block;
+  margin-top: 220px;
+}
+
+.samplecontent {
+  @include section();
+  .container {
+    @include container();
+    .main {
+      @include maincontent(#fff,300px);
+      .circle{
+        @include circle(50px,black)
+      }
+    }
+  }
+}
+
+
 
 .browsehappy {
     margin: 0.2em 0;
